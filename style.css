@@ -3,3 +3,66 @@ canvas{
   top:0;
   left:0;
 }
+
+main{
+  width: 100vw;
+  color: green;
+  -webkit-text-stroke: 2px, yellowgreen;
+  z-index: 99;
+  position: absolute;
+  width: 100%;
+  margin: 0px auto;
+  padding: 120px 0px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+pre{
+  grid-column: 1/ 12;
+}
+header{
+  background: var(--dark-bg);
+  grid-column: 2 / span 10;
+  font-size: 1.5rem;
+  padding: 2rem;
+  margin-bottom: var(--spacing);
+  background-color: black;
+  border: 5px, double yellow ;
+}
+section {
+  grid-column: 2 / 8;
+  padding: 1rem;
+  background: var(--dark-bg);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: var(--spacing);
+  background-color: black;
+  -webkit-text-stroke: 2px, yellow;
+}
+blockquote {
+  margin: 0;
+  padding: 0;
+  grid-column: 2/span 3;
+  margin-bottom: var(--spacing);
+  background: var(--dark-bg);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: var(--spacing);
+  background-color: black;
+  -webkit-text-stroke: 2px, yellow;
+}
+.right{
+  right: 0px;
+  padding-left: 1rem;
+  grid-column: 8 / span 4;
+  padding: .5rem;
+  background: var(--dark-bg);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: var(--spacing);
+  background-color: black;
+  -webkit-text-stroke: 2px, yellow;
+}
+
+.span{
+  grid-column: 2 / span 10;
+}

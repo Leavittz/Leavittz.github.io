@@ -64,10 +64,42 @@ const maggz = new THREE.Mesh(
 
 scene.add(maggz);
 
+//MARS :)
+const marsTexture = new THREE.TextureLoader().load('MARS.jpg');
+const marsNormal = new THREE.TextureLoader().load('mars-normal.jpg');
+
+const mars = new THREE.Mesh(
+  new THREE.SphereGeometry(3,32,32),
+  new THREE.MeshStandardMaterial({
+    map: marsTexture,
+    normalMap: marsNormal
+  })
+)
+
+scene.add(mars);
+mars.position.z = 30;
+mars.position.setX(-10);
 
 pointLight.position.set(20,20,20)
 
 scene.add(pointLight, ambiantLight)
+
+//move camera function
+function moveCamera() {
+  const t = document.body.getBoundingClientRect().top;
+  mars.rotation.x += 0.03;
+  mars.rotation.y += 0.085;
+  mars.rotation.z += 0.03;
+
+  maggz.rotation.x += 0.01;
+  maggz.rotation.z += 0.01;
+
+  camera.position.z = t * -0.01;
+  camera.position.x = t * -0.0002;
+  camera.position.y = t * -0.0002;
+}
+
+document.body.onscroll = moveCamera
 
 function animate() {
   requestAnimationFrame( animate);
