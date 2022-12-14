@@ -14,42 +14,42 @@ const camera =  new THREE.PerspectiveCamera(75, window.innerWidth / window.inner
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#bg"),
 });
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize( window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
+renderer.setPixelRatio(window.devicePixelRatio);//device aspect ratio
+renderer.setSize( window.innerWidth, window.innerHeight);//same
+camera.position.setZ(30);//initial camera position
 
-renderer.render(scene, camera);
+renderer.render(scene, camera);// renders camera in renderer
 
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100)
 const material = new  THREE.MeshStandardMaterial({color: 0xFF6347});
-const torus = new THREE.Mesh(geometry, material);
+const torus = new THREE.Mesh(geometry, material);// combines mat and geometry into mesh
 
-scene.add(torus)
+scene.add(torus)// adds torus
 
-const ambiantLight = new THREE.AmbientLight(0xffffff)
+const ambiantLight = new THREE.AmbientLight(0xffffff)// new ambient light source
 
-const pointLight = new THREE.PointLight(0xffffff)  
-const gridHelper = new THREE.GridHelper(200,50);
+const pointLight = new THREE.PointLight(0xffffff)  //new point light source
+//const gridHelper = new THREE.GridHelper(200,50);//grid helper
 
-const lightHelper = new THREE.PointLightHelper(pointLight)//all these helpers sure are helpful, This one shows us our camera
-scene.add(lightHelper, gridHelper)
+//const lightHelper = new THREE.PointLightHelper(pointLight)//all these helpers sure are helpful, This one shows us our camera
+//scene.add(lightHelper, gridHelper)//initialized helpers
 
 const controls = new OrbitControls(camera, renderer.domElement);//our orbit controls instantiated
 
 
-//now lets add some starts:
+//now lets add some stars:
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
   const material = new THREE.MeshStandardMaterial( { color: 0xffffff } )
   const star = new THREE.Mesh( geometry, material );
 //add them in randomly like this
-  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 100 ) );
+  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 100 ) );//adds rand values to the size 3 array as X,y,z then pass values to array of 200 stars below
 
-  star.position.set(x, y, z);
-  scene.add(star)
+  star.position.set(x, y, z);// sets  star position to the x,y,z we randomly generated
+  scene.add(star)//actually creates the star
 }
 
-Array(200).fill().forEach(addStar)
+Array(200).fill().forEach(addStar)// fills array with stars and xyz values from above function
 
 const spaceTexture = new THREE.TextureLoader().load('wp3837839.jpg');
 scene.background = spaceTexture;//background loads in
@@ -61,7 +61,7 @@ const maggz = new THREE.Mesh(
   new THREE.BoxGeometry(3,3,3),
   new THREE.MeshBasicMaterial({map: maggzTexture})
 );
-
+//adds avatar box inside of torus
 scene.add(maggz);
 
 //MARS :)
@@ -75,8 +75,9 @@ const mars = new THREE.Mesh(
     normalMap: marsNormal
   })
 )
-
+//adds mars
 scene.add(mars);
+//sets mars position
 mars.position.z = 30;
 mars.position.setX(-10);
 
