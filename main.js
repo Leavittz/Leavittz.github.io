@@ -51,6 +51,19 @@ function addStar() {
 
 Array(200).fill().forEach(addStar)
 
+const spaceTexture = new THREE.TextureLoader().load('wp3837839.jpg');
+scene.background = spaceTexture;//background loads in
+
+//avatar box :)
+const maggzTexture = new THREE.TextureLoader().load('maggz.jpg');
+
+const maggz = new THREE.Mesh(
+  new THREE.BoxGeometry(3,3,3),
+  new THREE.MeshBasicMaterial({map: maggzTexture})
+);
+
+scene.add(maggz);
+
 
 pointLight.position.set(20,20,20)
 
