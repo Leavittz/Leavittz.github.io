@@ -55,8 +55,8 @@ const spaceTexture = new THREE.TextureLoader().load('wp3837839.jpg');
 scene.background = spaceTexture;//background loads in
 
 //avatar box :)
-const maggzTexture = new THREE.TextureLoader().load('maggz.jpg');
-
+const maggzTexture = new THREE.TextureLoader().load('maggz.jpg');// texture
+//my mesh!
 const maggz = new THREE.Mesh(
   new THREE.BoxGeometry(3,3,3),
   new THREE.MeshBasicMaterial({map: maggzTexture})
@@ -87,28 +87,29 @@ scene.add(pointLight, ambiantLight)
 
 //move camera function
 function moveCamera() {
-  const t = document.body.getBoundingClientRect().top;
+  const t = document.body.getBoundingClientRect().top;// checks distance to the top of the page
+  //mars rotations
   mars.rotation.x += 0.03;
   mars.rotation.y += 0.085;
   mars.rotation.z += 0.03;
-
+  //maggz Rotations
   maggz.rotation.x += 0.01;
   maggz.rotation.z += 0.01;
-
+  //camera rotations
   camera.position.z = t * -0.01;
   camera.position.x = t * -0.0002;
   camera.position.y = t * -0.0002;
 }
 
-document.body.onscroll = moveCamera
+document.body.onscroll = moveCamera// move camera back and forward on scroll
 
-function animate() {
-  requestAnimationFrame( animate);
-  torus.rotation.x += 0.003;
+function animate() {// this makes the rendererrecheck and do these things constantly
+  requestAnimationFrame( animate);//helps with the above
+  torus.rotation.x += 0.003;//torus constant rotations
   torus.rotation.y += 0.015;
   torus.rotation.z += 0.013;
-  controls.update();
-  renderer.render(scene, camera);
+  controls.update();//update control status
+  renderer.render(scene, camera);// renders the scene and the camera
 }
 
-animate()
+animate()// calls animate
