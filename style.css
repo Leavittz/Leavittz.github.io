@@ -21,6 +21,8 @@ pre{
 }
 header{
   background: var(--dark-bg);
+  border-radius: 15px;
+  margin: 10px;
   grid-column: 2 / span 10;
   font-size: 1.5rem;
   padding: 2rem;
@@ -29,25 +31,25 @@ header{
   border: 5px, double yellow ;
 }
 section {
+  margin: 10px, 10px, var(--spacing), 10px;
+  border-radius: 15px;
   grid-column: 2 / 8;
   padding: 1rem;
   background: var(--dark-bg);
   font-size: 1.25rem;
   line-height: 1.5;
-  margin-bottom: var(--spacing);
   background-color: black;
   -webkit-text-stroke: 2px, yellow;
 }
 blockquote {
-  margin: 0;
+  margin: 10px, 10px, var(--spacing), 10px;
   padding: 0;
   grid-column: 2/span 3;
-  margin-bottom: var(--spacing);
   background: var(--dark-bg);
   font-size: 1.25rem;
   line-height: 1.5;
-  margin-bottom: var(--spacing);
   background-color: black;
+  border-radius: 15px;
   -webkit-text-stroke: 2px, yellow;
 }
 .right{
@@ -58,9 +60,10 @@ blockquote {
   background: var(--dark-bg);
   font-size: 1.25rem;
   line-height: 1.5;
-  margin-bottom: var(--spacing);
   background-color: black;
+  border-radius: 15px;
   -webkit-text-stroke: 2px, yellow;
+  margin: 10px, 10px, var(--spacing), 10px;
 }
 
 .span{
