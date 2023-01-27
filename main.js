@@ -4,7 +4,7 @@ import './style.css' // imports styles
 //Project: My 3JS Portfolio
  
 import * as THREE from 'three'; //gets access to the dependencies needed from 3JS 
-import { AmbientLight, Camera, Color } from 'three';//other nessesary imports
+import { AmbientLight, Camera, Color, MeshStandardMaterial } from 'three';//other nessesary imports
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';//imports our orbit controls! Scroll bar can be setup now
 
 const scene = new THREE.Scene();//creates scene
@@ -20,11 +20,18 @@ camera.position.setZ(30);//initial camera position
 
 renderer.render(scene, camera);// renders camera in renderer
 
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100)
-const material = new  THREE.MeshStandardMaterial({color: 0xFF6347});
-const torus = new THREE.Mesh(geometry, material);// combines mat and geometry into mesh
+const geometryBox = new THREE.BoxGeometry(15,15, 15,);
+const materialBox = new THREE.MeshStandardMaterial({color: 0x487e2d});
+const box = new THREE.Mesh(geometryBox, materialBox);
+box.position.setX(25);
+box.position.setY(-15)
+scene.add(box)
 
-scene.add(torus)// adds torus
+// const geometry = new THREE.TorusGeometry(10, 3, 16, 100)
+// const material = new  THREE.MeshStandardMaterial({color: 0xFF6347});
+// const torus = new THREE.Mesh(geometry, material);// combines mat and geometry into mesh
+
+// scene.add(torus)// adds torus
 
 const ambiantLight = new THREE.AmbientLight(0xffffff)// new ambient light source
 
@@ -100,14 +107,27 @@ function moveCamera() {
   camera.position.x = t * -0.0002;
   camera.position.y = t * -0.0002;
 }
+// function cubeControlScheme() {
+//   if KeyboardEvent = w 
+//     box.rotateX = t * -0.02;
+//   if KeyboardEvent = s
+//    box.rotateX = t * 0.02;
+//   if KeyboardEvent = a
+//     box.rotateY = t * -0.02;
+//   if keypress = d
+//     box.rotateY = t * 0.02;
+// }
 
 document.body.onscroll = moveCamera// move camera back and forward on scroll
 
 function animate() {// this makes the rendererrecheck and do these things constantly
   requestAnimationFrame( animate);//helps with the above
-  torus.rotation.x += 0.003;//torus constant rotations
-  torus.rotation.y += 0.015;
-  torus.rotation.z += 0.013;
+  box.rotation.x += 0.03;//box constant rotations
+  box.rotation.y += 0.015;
+  box.rotation.z += 0.013;
+  // torus.rotation.x += 0.03;//torus constant rotations
+  // torus.rotation.y += 0.015;
+  // torus.rotation.z += 0.025;
   controls.update();//update control status
   renderer.render(scene, camera);// renders the scene and the camera
 }
